@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>贪吃蛇</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #my-canvas {
+            background-color: #27BA9A;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 200px;
+        }
+    </style>
 </head>
 <body>
-    <div class="main-box">
-        <div id="snake"></div>
-    </div>
+    <!-- 横竖各20格，每格30px，19条线，每条线1px -->
+    <canvas id="my-canvas" width="600px" height="600px"></canvas>
     <script src="./js/index.js"></script>
 </body>
 </html>
