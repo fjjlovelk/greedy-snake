@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.box {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    margin-top: 200px;
+}
+#my-canvas {
+    background-color: #27BA9A;
+}
+#over {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: gray;
+    opacity: 0;
+    text-align: center;
+    line-height: 600px;
+    font-size: 50px;
+}

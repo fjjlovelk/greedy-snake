@@ -6,26 +6,54 @@ let snake = [
     {x: 1, y: 0},
     {x: 0, y: 0}
 ];
+// 蛇的默认方向
+let dir = { x: 1, y: 0 };
 // 食物的默认位置
-const foodPos = {
-    x: Math.floor( Math.random() * 20 ) *30,
-    y: Math.floor( Math.random() * 20 ) *30
+let foodPos = {
+    x: Math.floor( Math.random() * 20 ),
+    y: Math.floor( Math.random() * 20 )
 };
 // 判断食物有没有被吃掉
 let isEated = false;
+let isOver = false;
 
 setInterval(() =>{
+    if(isOver){
+        document.getElementById("over").style.opacity = 0.6;
+        return;
+    }
     ctx.clearRect(0, 0, 600, 600);
     if(isEated){
         foodPos = {
-            x: Math.floor( Math.random() * 20 ) *30,
-            y: Math.floor( Math.random() * 20 ) *30
+            x: Math.floor( Math.random() * 20 ),
+            y: Math.floor( Math.random() * 20 )
         };
+        isEated = false;
     }
     drawFood();
     drawSnake();
     drawLine();
 }, 1000/3);
+
+document.addEventListener("keydown", (event)=>{
+    const e = event || window.event || arguments.callee.caller.arguments[0];
+    if(e){
+        switch (e.keyCode) {
+            case 38:
+                dir = { x: 0, y: -1 };
+                break;
+            case 39:
+                dir = { x: 1, y: 0 };
+                break;
+            case 40:
+                dir = { x: 0, y: 1 };
+                break;
+            case 37:
+                dir = { x: -1, y: 0 };
+                break;
+        }
+    }
+})
 
 // 绘制坐标系
 function drawLine(){
@@ -41,7 +69,7 @@ function drawLine(){
 // 绘制食物
 function drawFood(){
     ctx.fillStyle = "#FFC209";
-    ctx.fillRect(foodPos.x, foodPos.y, 30, 30);
+    ctx.fillRect(foodPos.x * 30, foodPos.y * 30, 30, 30);
 }
 // 绘制蛇
 function drawSnake(){
@@ -51,11 +79,18 @@ function drawSnake(){
     for(let i=1; i<snake.length; i++){
         ctx.fillRect(snake[i].x * 30, snake[i].y * 30, 30, 30);
     }
-    snake.pop();
+    if(JSON.stringify(snake[0]) == JSON.stringify(foodPos)){
+        isEated = true;
+    }else{
+        snake.pop();
+    }
     const oldHead = snake[0];
     const newHead = {
-        x: oldHead.x + 1,
-        y: oldHead.y
+        x: oldHead.x + dir.x,
+        y: oldHead.y + dir.y
     }
     snake.unshift(newHead);
+    if(newHead.x < 0 || newHead.x >= 20 || newHead.y < 0 || newHead.y  >= 20){
+        isOver = true;
+    }
 }
