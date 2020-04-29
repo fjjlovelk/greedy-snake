@@ -2,12 +2,15 @@
     margin: 0;
     padding: 0;
 }
+html {
+    font-size: 10px;
+}
 .box {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 60rem;
+    height: 60rem;
     margin: 0 auto;
-    margin-top: 200px;
+    margin-top: 20rem;
 }
 #my-canvas {
     background-color: #27BA9A;
@@ -21,6 +24,6 @@
     background-color: gray;
     opacity: 0;
     text-align: center;
-    line-height: 600px;
-    font-size: 50px;
+    line-height: 60rem;
+    font-size: 5rem;
 }
