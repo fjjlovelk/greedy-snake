@@ -7,10 +7,31 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div class="box">
-        <!-- 横竖各20格，每格30px，19条线，每条线1px -->
-        <canvas id="my-canvas" width="600" height="600"></canvas>
-        <div id="over">GAME OVER</div>
+    <div class="main-box">
+        <div class="score-pre">当前得分：<span id="score1">0</span></div>
+        <div id="box"></div>
+        <button onclick="startGame()">开始游戏</button>
+        <button onclick="pauseGame()">暂&nbsp;&nbsp;停</button>
+        <div id="over">
+            <div id="over-tip">
+                <h1>GAME OVER</h1>
+                <div class="score-over">最后得分：<span id="score2"></span></div>
+            </div>
+            <button onclick="reStart()">重新开始</button>
+            <button onclick="backGame()">返&nbsp;&nbsp;回</button>
+        </div>
+    </div>
+    <div class="ctrl-box">
+        <div>
+            <button onclick="toUp()">上</button>
+        </div>
+        <div>
+            <button onclick="toLeft()">左</button>
+            <button onclick="toRight()">右</button>
+        </div>
+        <div>
+            <button onclick="toDown()">下</button>
+        </div>
     </div>
     <script src="./js/index.js"></script>
 </body>
